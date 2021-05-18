@@ -12,10 +12,14 @@ namespace DataStructures
 
         public ListElement AddFirst(string value)
         {
-
             var elementToAdd = new ListElement(value, this);
 
-            elementToAdd.NextElement = First;
+            if (First != null)
+            {
+                elementToAdd.NextElement = First;
+                First.PreviousElement = elementToAdd;
+                First = elementToAdd;
+            }
             First = elementToAdd;
 
             if (Last == null)
@@ -58,9 +62,10 @@ namespace DataStructures
             {
                 Last = null; 
                 Count = 0;
-                return null;
+                throw new ElementNotIsListException();
             }
 
+            var elem = First;
             var nextElem = First.NextElement;
 
             if(nextElem != null)
@@ -74,8 +79,8 @@ namespace DataStructures
                 Last = null;
             }
             Count--;
-            // Do not forget to DetachElement
-            return null;
+            DetachElement(elem);
+            return elem.Value;
         }
 
         public string GetAndRemoveLast()
@@ -84,11 +89,11 @@ namespace DataStructures
             {
                 First = null;
                 Count = 0;
-                return null;
+                throw new ElementNotIsListException();
             }
 
+            var elem = Last;
             var lastElem = Last.PreviousElement;
-
             if (lastElem != null)
             {
                 Last = lastElem;
@@ -101,8 +106,9 @@ namespace DataStructures
             }
 
             Count--;
-            // Do not forget to DetachElement
-            return null;
+
+            DetachElement(elem);
+            return elem.Value;
         }
 
         public void InsertAfter(ListElement element, string value)

@@ -68,10 +68,7 @@ namespace DoublyLinkedListTests
             list.GetAndRemoveLast();
             list.GetAndRemoveLast();
             list.GetAndRemoveLast();
-            list.GetAndRemoveLast();
-            list.GetAndRemoveLast();
-            string[] expectedSubArray = new string[0];
-            Assert.Equal(expectedSubArray, GetValuesFromList());
+            Assert.Throws<DataStructures.ElementNotIsListException>(() => list.GetAndRemoveLast());
         }
 
         [Fact]
@@ -85,10 +82,7 @@ namespace DoublyLinkedListTests
             list.GetAndRemoveFirst();
             list.GetAndRemoveFirst();
             list.GetAndRemoveFirst();
-            list.GetAndRemoveFirst();
-            list.GetAndRemoveFirst();
-            string[] expectedSubArray = new string[0];
-            Assert.Equal(expectedSubArray, GetValuesFromList());
+            Assert.Throws<DataStructures.ElementNotIsListException>(() => list.GetAndRemoveFirst());
         }
 
         [Fact]
@@ -119,7 +113,7 @@ namespace DoublyLinkedListTests
             while (elem != null)
             {
                 list.RemoveElement(elem);
-                elem = elem.NextElement;
+                elem = list.First;
             }
 
             string[] expectedSubArray = new string[0];
