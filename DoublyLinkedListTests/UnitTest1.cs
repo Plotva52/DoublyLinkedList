@@ -68,7 +68,7 @@ namespace DoublyLinkedListTests
             list.GetAndRemoveLast();
             list.GetAndRemoveLast();
             list.GetAndRemoveLast();
-            Assert.Throws<DataStructures.ElementNotIsListException>(() => list.GetAndRemoveLast());
+            Assert.Throws<DataStructures.ListIsEmptyException>(() => list.GetAndRemoveLast());
         }
 
         [Fact]
@@ -82,7 +82,7 @@ namespace DoublyLinkedListTests
             list.GetAndRemoveFirst();
             list.GetAndRemoveFirst();
             list.GetAndRemoveFirst();
-            Assert.Throws<DataStructures.ElementNotIsListException>(() => list.GetAndRemoveFirst());
+            Assert.Throws<DataStructures.ListIsEmptyException>(() => list.GetAndRemoveFirst());
         }
 
         [Fact]

@@ -61,7 +61,7 @@ namespace DataStructures
             {
                 Last = null; 
                 Count = 0;
-                throw new ElementNotIsListException();
+                throw new ListIsEmptyException();
             }
 
             var elem = First;
@@ -88,7 +88,7 @@ namespace DataStructures
             {
                 First = null;
                 Count = 0;
-                throw new ElementNotIsListException();
+                throw new ListIsEmptyException();
             }
 
             var elem = Last;
@@ -166,6 +166,8 @@ namespace DataStructures
 
         private void ValidateElement(ListElement element)
         {
+            if(element == null)           
+                throw new ArgumentNullException();          
             if (element.OwnerList != this)
                 throw new ElementNotIsListException();
         }
