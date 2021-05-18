@@ -18,7 +18,6 @@ namespace DataStructures
             {
                 elementToAdd.NextElement = First;
                 First.PreviousElement = elementToAdd;
-                First = elementToAdd;
             }
             First = elementToAdd;
 
